@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'CapstoneAngularUI'`, () => {
+  it(`should have as title 'CapStoneAngularUI'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('CapstoneAngularUI');
+    expect(app.title).toEqual('CapStoneAngularUI');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('CapstoneAngularUI app is running!');
+    expect(compiled.querySelector('.content span').textContent).toContain('CapStoneAngularUI app is running!');
   });
 });
