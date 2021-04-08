@@ -1,0 +1,46 @@
+<!-- <app-navbar></app-navbar> -->
+<div class="login-container">
+
+    <div class="row">
+
+        <div class="col-md-5" style="float: right; margin-top:15%;margin-left: 100px;">
+            <p style="font-size: xx-large; color:blueviolet; font-weight: 100; "><strong>Welcome to</strong></p>
+            <h1><strong>Mphasis Portal</strong> </h1>
+        </div>
+
+        <div class="col-md-5">
+            <form [formGroup]="loginForm" (ngSubmit)="authUser()">
+
+                <div class="form-group">
+                    <h4>Login</h4>
+                    <br>
+                    <div [ngClass]="{'has-error':formControl.emailId.touched && formControl.emailId.errors}">
+                        <input type="email" class="form-control" placeholder="EMAIL ID" formControlName="emailId" required>
+                        <span class="text-danger" *ngIf="formControl.emailId.invalid && (formControl.emailId.touched || formControl.emailId.dirty)">
+                              *Email-Id required
+                          </span>
+                    </div>
+
+                    <div [ngClass]="{'has-error':formControl.password.touched && formControl.password.errors}">
+                        <input type="password" class="form-control" placeholder="PASSWORD" formControlName="password" required>
+                        <span class="text-danger px-2" *ngIf="formControl.password.errors && formControl.password.touched && formControl.password.errors.required">
+                              *Password required
+                      </span>
+                    </div>
+
+                    <input type="checkbox" id="cb">
+                    <label for="cb">Remember me</label>
+                    <br>
+                    <!-- <input [disabled]="!loginForm.valid" type="button" value="SUBMIT" class="btn"> -->
+                    <button type="submit" [disabled]="!loginForm.valid" class="btn">SUBMIT</button>
+                    <br>
+                    <p style="text-align:center; color: #CF268A;">Not Registered?<a routerLink="/signup">Sign Up</a></p>
+                    <br>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+</div>
+<app-footer></app-footer>

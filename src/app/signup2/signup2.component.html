@@ -1,0 +1,34 @@
+<div class="bg-img">
+
+    <div class="tab">
+        <h1 style="margin-left: 100px; color:blueviolet"><b>Welcome to</b></h1>
+        <h1 style="margin-left: 100px"><strong> Mphasis Portal</strong></h1>
+    </div>
+
+    <form [formGroup]="signupForm" action="" method="" (ngSubmit)="onSubmitcheck()" #mySignupForm="ngForm">
+        <div class="container">
+            <h1 style="margin-left: 50px;">Sign Up</h1><br>
+
+            <p style="color: green;">{{msg}}</p>
+            <p style="color: red;">{{msg2}}</p>
+            <input type="email" class="form-control" placeholder="EMAIL" formControlName="emailId" autofocus>
+            <div *ngIf="signupForm.get('emailId').hasError('required') && mySignupForm.submitted" class="text-danger">Email id is required</div>
+            <div *ngIf="signupForm.get('emailId').hasError('email') && mySignupForm.submitted" class="text-danger">Please enter a valid email</div>
+
+
+            <input type="text" class="form-control" name="password" placeholder="PASSWORD" formControlName="password">
+            <div *ngIf="signupForm.get('password').hasError('required') && mySignupForm.submitted" class="text-danger">Password is required</div>
+            <!-- <div *ngIf="formControl.password.errors && formControl.password.touched" class="text-danger">Please enter a valid password</div> -->
+            <div *ngIf="signupForm.get('password').errors?.pattern && mySignupForm.submitted" class="text-danger">Please enter a valid password</div>
+
+
+            <input type="text" class="form-control" name="confirmPassword" placeholder="REPEAT PASSWORD" formControlName="confirmPassword">
+            <div *ngIf="signupForm.get('confirmPassword').hasError('required') && mySignupForm.submitted" class="text-danger">Repeat password is required</div>
+
+            <button type="submit" class="btn">Register</button><br>
+            <p style="text-align:center; color: #CF268A;">Already Registered?<a routerLink="/login">Login</a></p>
+        </div>
+    </form>
+</div>
+<div>
+    <app-footer></app-footer>

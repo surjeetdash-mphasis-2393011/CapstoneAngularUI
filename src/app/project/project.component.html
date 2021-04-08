@@ -1,0 +1,67 @@
+<button type="button" style="margin-left: 600px;" class="btn btn-info" (click)="openModal(myModal)">Create</button>
+
+<table class="table">
+    <tr ngclass="btn-primary">
+        <th class="tbl2">Project Name</th>
+        <th class="tbl2">Description</th>
+        <th class="tbl2">Duration</th>
+        <th class="tbl2">EMail</th>
+        <th class="tbl2">Edit</th>
+        <th class="tbl2">Delete</th>
+    </tr>
+    <tr *ngFor="let project of allProjects | async">
+        <td class="tbl2">{{project.projectName}}</td>
+        <td class="tbl2">{{project.projectDesc }}</td>
+        <td class="tbl2">{{project.duration}}</td>
+        <td class="tbl2">{{project.emailId}}</td>
+
+        <td class="tbl2">
+            <button type="button" class="btn btn-info" (click)="loadProjectInfo(project,myModal)">Edit</button>
+        </td>
+        <td class="tbl2">
+            <button type="button" class="btn btn-danger" (click)="deelteProject(project)">Delete</button>
+        </td>
+    </tr>
+
+</table>
+
+<ng-template #myModal>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Modal</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="employeeForm">
+
+            Project Name:
+            <div class="form-group">
+                <input type="text" class="form-control" formControlName="projectName">
+            </div>
+
+            Project Desc:
+            <div class="form-group">
+                <input type="text" class="form-control" formControlName="projectDesc">
+            </div>
+
+            Email Id:
+            <div class="form-group">
+                <input type="text" class="form-control" formControlName="emailId">
+            </div>
+
+            Duration:
+            <div class="form-group">
+                <input type="text" formControlName="duration">
+            </div>
+
+            <div class="modal-footer">
+                <div class="text-right m-2">
+
+                    <input type="submit" (click)="close()" value="Update">
+                </div>
+            </div>
+        </form>
+    </div>
+
+</ng-template>

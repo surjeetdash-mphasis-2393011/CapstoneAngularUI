@@ -1,0 +1,43 @@
+<body>
+    <nav class="navbar navbar-expand-sm  navbar-dark " id="grad">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="w3-bar-item w3-button"><img src="assets/images/logo1.png" alt="Mphasis.ltd"></a>
+            </div>
+
+            <ul *ngIf="Name" class="nav navbar-nav navbar-brand inline">
+                <li>{{Name.firstName + Name.lastName }}</li>&nbsp;&nbsp;
+
+                <li><i class="fa fa-user-circle" aria-hidden="true"></i>
+                </li>&nbsp;
+                <li>
+                    <div class="dropdown show" *ngIf="Name.firstName + Name.lastName">
+                        <a class=" dropdown-toggle" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-left " aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item" routerLink="/profile">Personal Data</a>
+                            <a class="dropdown-item" routerLink="/project">Project Details</a>
+                            <a class="dropdown-item" routerLink="/login" (click)="clear()">Logout</a>
+                        </div>
+                    </div>
+                </li>&nbsp;
+
+
+
+            </ul>
+        </div>
+    </nav>
+
+
+
+
+</body>
+
+
+<!--
+<footer class="footerbottom">
+
+    <p>Copyrights.All Rights Reserved &copy;Mphasis Limited.</p>
+</footer> -->
