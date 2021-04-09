@@ -6,6 +6,8 @@ import { LoginComponent } from './login/login.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './admin/admin.component';
+import { AuthGuard } from './auth.guard';
+import { AuthAdminGuard } from './auth-admin.guard';
 
 const routes: Routes = [{
   path: '',
@@ -20,18 +22,18 @@ const routes: Routes = [{
   component: Signup2Component
 },{
   path: 'home',
-  component: HomeComponent
+  component: HomeComponent, canActivate:[AuthGuard]
 },
 {
   path: 'project',
-  component: ProjectComponent
+  component: ProjectComponent, canActivate:[AuthGuard]
 },
 
 {
   path: 'profile',
-  component: ProfileComponent
+  component: ProfileComponent , canActivate:[AuthGuard]
 },
-{path:"admin", component:AdminComponent}
+{path:"admin", component:AdminComponent , canActivate:[ AuthAdminGuard]}
 ];
 
 @NgModule({

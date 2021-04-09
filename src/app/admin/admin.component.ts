@@ -47,7 +47,7 @@ export class AdminComponent implements OnInit {
   }
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
-    this.modalRef2= this.modalService.show(template);
+    
   }
   openModal2(template: TemplateRef<any>) {
 
@@ -58,7 +58,7 @@ export class AdminComponent implements OnInit {
   close(){
      
     this.createUser();
-    this.getallUsers();
+   
     this.modalRef.hide();
   }
 
@@ -79,6 +79,7 @@ export class AdminComponent implements OnInit {
   createUser(){
     this.profileSer.createprofile(this.updateform.value).subscribe(data=>{
       console.log(data)
+      this.getallUsers();
     })
 
  
@@ -109,5 +110,9 @@ export class AdminComponent implements OnInit {
  
   
    this.modalRef2.hide();
+  }
+  logout(){
+    localStorage.clear();
+    window.location.reload();
   }
 }

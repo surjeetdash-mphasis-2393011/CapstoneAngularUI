@@ -19,6 +19,8 @@ import { ProjectComponent } from './project/project.component';
 import { AdminComponent } from './admin/admin.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import{ MatTabsModule } from "@angular/material/tabs"
+import { AuthGuard } from './auth.guard';
+import { AuthAdminGuard } from './auth-admin.guard';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +44,8 @@ import{ MatTabsModule } from "@angular/material/tabs"
     MatTabsModule
 
   ],
-  providers: [DatePipe],
+  providers: [DatePipe, AuthGuard, AuthAdminGuard],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

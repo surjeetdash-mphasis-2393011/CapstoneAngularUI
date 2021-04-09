@@ -15,4 +15,12 @@ export class LoginService {
     return this.http.get(this.url2+emailId+'/'+password);
 
   }
+
+  loggedIn(){
+    let emailId = localStorage.getItem('id')
+    console.log(!emailId == null);
+     return !(emailId == null)
+    
+    
+  }
 }

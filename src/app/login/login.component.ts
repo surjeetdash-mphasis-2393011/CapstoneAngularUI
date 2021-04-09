@@ -40,7 +40,14 @@ export class LoginComponent implements OnInit {
         alert(this.invalidCredentials);
         // localStorage.setItem("emailId",emailId);
         localStorage.setItem('id', (this.loginForm.get('emailId').value));
-        this.router.navigate(['home']);
+        var admin=localStorage.getItem('id');
+        if( admin == "admin@mphasis.com"){
+           this.router.navigate(['admin']);
+        }
+
+        else{
+          this.router.navigate(['home']);
+        }
       }
     })
   }

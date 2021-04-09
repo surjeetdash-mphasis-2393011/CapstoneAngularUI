@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class Signup2Service {
 
-  url:string='http://localhost:8082/users/';
+  url:string='http://localhost:8080/users/';
   constructor(private http:HttpClient) { }
   //adding users for signup
   addUsers(user:any)
