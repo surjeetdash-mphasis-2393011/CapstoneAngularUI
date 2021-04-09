@@ -6,7 +6,8 @@ import { Injectable } from '@angular/core';
 })
 export class ProfileServiceService {
 
-  url:string= "http://localhost:8082/profile/"
+  url:string= "http://localhost:8080/profile/"
+  url2:string= "http://localhost:8080/profile"
   constructor(private http:HttpClient) { }
 
   getprofile(email:string){
@@ -21,7 +22,14 @@ export class ProfileServiceService {
       return this.http.put(this.url+"updateprofile", profile)
   }
 
+  getallprofiles(){
+    return this.http.get(this.url2)
+  }
 
+  createprofile(profile:any){
+
+    return this.http.post(this.url2,profile)
+  }
 
 
 }

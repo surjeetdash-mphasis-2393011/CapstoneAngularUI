@@ -16,6 +16,9 @@ import { ProfileComponent } from './profile/profile.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { ProjectComponent } from './project/project.component';
+import { AdminComponent } from './admin/admin.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import{ MatTabsModule } from "@angular/material/tabs"
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,14 +29,17 @@ import { ProjectComponent } from './project/project.component';
     LoginComponent,
     FooterComponent,
     HomeComponent,
-    ProjectComponent
+    ProjectComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
    ModalModule.forRoot(),
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatTabsModule
 
   ],
   providers: [DatePipe],

@@ -71,6 +71,8 @@ export class ProfileComponent implements OnInit {
       this.employee.locationId=this.employee.locationId == 1? "Chennai" : "Bangalore"
       this.employee.dateOfBirth= this.dp.transform(this.employee.dateOfBirth,'yyyy-MM-dd')
       this.updateform.patchValue(this.employee);
+      console.log(this.employee);
+      
 
 
    }

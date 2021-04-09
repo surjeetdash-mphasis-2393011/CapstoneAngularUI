@@ -10,17 +10,24 @@ export class ProjectService {
   constructor(private http: HttpClient) { }
 
   getProjectDetails(Email:String): Observable<any> {
-    return this.http.get("http://localhost:8082/projects/getByEmail/"+Email);
+    return this.http.get("http://localhost:8080/projects/getByEmail/"+Email);
   }
 
   createProject(project: Project): Observable<any> {
-    return this.http.post("http://localhost:8082/projects/post", project);
+    return this.http.post("http://localhost:8080/projects/post", project);
   }
 
   updateProject(project: Project): Observable<any> {
-    return this.http.post("http://localhost:8082/projects/update", project);
+    return this.http.put("http://localhost:8080/projects/update", project);
   }
-  deleteProject(id: any): Observable<any> {
-    return this.http.delete("http://localhost:8082/projects/delete/" + id);
+  deleteProject(id:number) {
+    console.log(id)
+    let url="http://localhost:8080/projects/delete/"+ id
+    console.log(url)
+    return this.http.get("http://localhost:8080/projects/delete/"+id)
+  }
+
+  getallProjects(){
+    return this.http.get("http://localhost:8080/projects")
   }
 }

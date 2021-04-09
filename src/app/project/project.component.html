@@ -1,15 +1,22 @@
-<button type="button" style="margin-left: 600px;" class="btn btn-info" (click)="openModal(myModal)">Create</button>
+<app-navbar></app-navbar>
+<div class="m-3 justify-content-center ">
+    <h2 class="text-center">Project Details</h2><br>
+    <button type="button" style="margin-left: 45%;" class="btn btn-info  " (click)="openModal(myModal)">Add Project</button>
+</div>
+
 
 <table class="table">
     <tr ngclass="btn-primary">
+        <th class="tbl2">Id</th>
         <th class="tbl2">Project Name</th>
         <th class="tbl2">Description</th>
         <th class="tbl2">Duration</th>
-        <th class="tbl2">EMail</th>
+        <th class="tbl2">Email</th>
         <th class="tbl2">Edit</th>
         <th class="tbl2">Delete</th>
     </tr>
     <tr *ngFor="let project of allProjects | async">
+        <td class="tbl2">{{project.projectId}}</td>
         <td class="tbl2">{{project.projectName}}</td>
         <td class="tbl2">{{project.projectDesc }}</td>
         <td class="tbl2">{{project.duration}}</td>
@@ -19,7 +26,7 @@
             <button type="button" class="btn btn-info" (click)="loadProjectInfo(project,myModal)">Edit</button>
         </td>
         <td class="tbl2">
-            <button type="button" class="btn btn-danger" (click)="deelteProject(project)">Delete</button>
+            <button type="button" class="btn btn-danger" (click)="deleteProject(project.projectId)">Delete</button>
         </td>
     </tr>
 
@@ -34,7 +41,7 @@
     </div>
     <div class="modal-body">
         <form [formGroup]="employeeForm">
-
+        
             Project Name:
             <div class="form-group">
                 <input type="text" class="form-control" formControlName="projectName">
@@ -58,7 +65,7 @@
             <div class="modal-footer">
                 <div class="text-right m-2">
 
-                    <input type="submit" (click)="close()" value="Update">
+                    <input type="submit" class="btn btn-primary" (click)="close()" value="Update">
                 </div>
             </div>
         </form>

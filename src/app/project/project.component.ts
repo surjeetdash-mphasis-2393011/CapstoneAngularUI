@@ -4,7 +4,7 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Observable } from 'rxjs';
 import { ProjectService } from '../project.service';
 export interface Project {
-  id: number
+  projectId: number
   projectName: string
   projectDesc: string
   duration: string
@@ -41,7 +41,7 @@ export class ProjectComponent implements OnInit {
       projectDesc: ['', [Validators.required]],
       emailId: ['', [Validators.required]],
       duration: ['', [Validators.required]],
-      projectId: ['', [Validators.required]],
+      projectId: ["", [Validators.required]],
     });
     this.getProjectDetails();
   }
@@ -60,7 +60,7 @@ export class ProjectComponent implements OnInit {
 
   createProject(project: Project) {
     console.log(project);
-    if (project.id == null) {
+    if (project.projectId == null) {
       this.projectService.createProject(project).subscribe((data) => {
         this.getProjectDetails();
       }, (error) => {
@@ -77,26 +77,33 @@ export class ProjectComponent implements OnInit {
 
   loadProjectInfo(project:Project,template:TemplateRef<any>)
   {
-   console.log(project);
+
    this.employeeForm.controls['projectName'].setValue(project.projectName);
    this.employeeForm.controls['projectDesc'].setValue(project.projectDesc);
    this.employeeForm.controls['emailId'].setValue(project.emailId);
    this.employeeForm.controls['duration'].setValue(project.duration);
-   this.employeeForm.controls['projectId'].setValue(project.id);
+   this.employeeForm.controls['projectId'].setValue(project.projectId);
    this.projectInfo=project;
     this.modalService.show(template);
   }
 
-  deelteProject(project:Project)
+  deleteProject(id:any)
   {
-    this.projectService.deleteProject(project.id);
+
+
+    this.projectService.deleteProject(id).subscribe(data=>{
+      this.getProjectDetails();
+    });
   }
 
   close(){
 
     this.formData=this.employeeForm.value;
-    if(this.formData.projectId > 0)
+    console.log(this.employeeForm.value)
+   
+    if(this.formData.projectId != undefined)
     {
+      console.log(this.formData.projectId)
       this.projectService.updateProject(this.formData).subscribe((data)=>{
         this.getProjectDetails();
       },(error)=>{

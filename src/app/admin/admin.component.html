@@ -1,0 +1,198 @@
+<div class="container">
+ 
+     <div class="jumbotron">
+        <h2>Welcome To Admin Panel</h2> 
+
+       
+     </div>   
+
+     <mat-tab-group>
+        <mat-tab label="User Profiles Module">  
+
+            <Button class="btn btn-info m-3"  (click)="openModal(myModal)">Add User Profile</Button>
+       
+           <table class="table table-striped">
+            
+            <thead>
+                <th>
+                    Email Id
+                </th>
+                <th>
+                    First Name
+                </th>
+                <th>
+                    Last Name
+                </th>
+                <th>Employee Id</th>
+                <th>
+                    Date Of Birth
+                </th>
+                <th>
+                    Location Id
+                </th>
+       
+            </thead>
+            <tbody>
+               <tr *ngFor="let e of employee">
+                   <td>{{e.emailId}}</td>
+                   <td>{{e.firstName}}</td>
+                   <td>{{e.lastName}}</td>
+                   <td>{{e.employeeId}}</td>
+                   <td>{{e.dateOfBirth | date}}</td>
+                   <td>{{e.locationId}}</td>
+               </tr>
+               
+            </tbody>
+              
+       
+             
+           </table>
+       </mat-tab>
+        <mat-tab label="Projects Module">
+
+ 
+            <Button class="btn btn-info m-3" (click)="openModal2(myModal2)">Add Project</Button>
+
+            <table class="table table-striped">
+             
+             <thead>
+                 <th>
+                  ProjectId
+                 </th>
+                 <th>
+                     EmailId
+                   </th>
+                 <th>
+                   ProjectName
+                 </th>
+                 <th>ProjectDescription</th>
+                 <th>
+                 Duration
+                 </th>
+                 
+        
+             </thead>
+             <tbody>
+                <tr *ngFor="let e of projectdata">
+                    <td>{{e.projectId}}</td>
+                    <td>{{e.emailId}}</td>
+                    <td>{{e.projectName}}</td>
+                    <td>{{e.projectDesc}}</td>
+                    <td>{{e.duration}}</td>
+               
+                </tr>
+                
+             </tbody>
+               
+        
+              
+            </table>
+        
+
+        </mat-tab>
+
+      </mat-tab-group>
+     
+
+
+</div>
+
+<ng-template #myModal>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Add User</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="updateform">
+
+
+
+            Email Id:
+            <div class="form-group">
+                <input type="text" class="form-control"  formControlName="emailId">
+            </div>
+
+            FirstName:
+            <div class="form-group">
+                <input type="text" class="form-control" formControlName="firstName">
+            </div>
+
+            LastName:
+            <div class="form-group">
+                <input type="text" class="form-control" formControlName="lastName">
+            </div>
+
+            
+
+            DateOfBirth:
+            <div class="form-group">
+                <input type="date" formControlName="dateOfBirth">
+            </div>
+            EmployeeId
+            <div class="form-group">
+                <input type="text" class="form-control"  formControlName="employeeId">
+            </div>
+
+            Location
+            <div class="form-group">
+                <select class="form-control" id="sel1" formControlName="locationId">
+                <option value="1">Chennai</option>
+                <option value="2">Bangalore</option>
+
+              </select>
+            </div>
+
+            <div class="modal-footer">
+                <div class="text-right m-2">
+
+                    <input type="submit" class="btn btn-primary" (click)="close()" value="Add User">
+                </div>
+            </div>
+        </form>
+    </div>
+
+</ng-template>
+
+
+<ng-template #myModal2>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Add Project</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef2.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="projectForm">
+        
+            Project Name:
+            <div class="form-group">
+                <input type="text" class="form-control" formControlName="projectName">
+            </div>
+
+            Project Desc:
+            <div class="form-group">
+                <input type="text" class="form-control" formControlName="projectDesc">
+            </div>
+
+            Email Id:
+            <div class="form-group">
+                <input type="text" class="form-control" formControlName="emailId">
+            </div>
+
+            Duration:
+            <div class="form-group">
+                <input type="text" formControlName="duration">
+            </div>
+
+            <div class="modal-footer">
+                <div class="text-right m-2">
+
+                    <input type="submit" class="btn btn-primary" (click)="closeproject()" value="Add Project">
+                </div>
+            </div>
+        </form>
+    </div>
+
+</ng-template>

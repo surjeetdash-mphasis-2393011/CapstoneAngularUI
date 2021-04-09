@@ -5,6 +5,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { LoginComponent } from './login/login.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminComponent } from './admin/admin.component';
 
 const routes: Routes = [{
   path: '',
@@ -29,7 +30,9 @@ const routes: Routes = [{
 {
   path: 'profile',
   component: ProfileComponent
-}];
+},
+{path:"admin", component:AdminComponent}
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
